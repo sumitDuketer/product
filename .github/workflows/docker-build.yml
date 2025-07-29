@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: sumitduketer/product-service:latest
+          tags: sumitmahto/product-service:latest
