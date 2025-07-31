@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: product
+          image: sumitmahto/product-service:latest
+          ports:
+            - containerPort: 9090  # ✅ Updated to 9090
+          env:
+            - name: SPRING_DATA_MONGODB_URI
+              value: mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongo-service:27017/productdb?authSource=admin
+            - name: MONGO_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: mongo-username
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-password
