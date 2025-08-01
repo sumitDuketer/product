@@ -16,10 +16,8 @@ spec:
         - name: product
           image: sumitmahto/product-service:latest
           ports:
-            - containerPort: 9090  # ✅ Updated to 9090
+            - containerPort: 9090
           env:
-            - name: SPRING_DATA_MONGODB_URI
-              value: mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongo:27017/productdb?authSource=admin
             - name: MONGO_USERNAME
               valueFrom:
                 configMapKeyRef:
