@@ -1,7 +1,7 @@
 # product
 product service for NAGP program
 
-# Product Service - Kubernetes + Helm + CI/CD
+# Product Service - Kubernetes + Docker
 
 ##  Links
 - **Code Repository:** [GitHub Repo](https://github.com/sumitDuketer/product)
